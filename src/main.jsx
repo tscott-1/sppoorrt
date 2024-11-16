@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./Main.css";
 
 // Here we import out pages
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import ProjectsPage from "./pages/ProjectsPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 
 // Here we import our components
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/about", element: <AboutPage /> },
+      { path: "/projects", element: <ProjectsPage /> },
       { path: "/contact", element: <ContactPage /> },
     ],
   },
