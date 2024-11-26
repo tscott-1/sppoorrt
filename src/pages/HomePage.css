@@ -1,3 +1,14 @@
+/* Import modern sporty Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #0056b3; /* Deeper blue for better contrast */
+    --secondary-color: #d9372a; /* Deeper red-orange for clarity */
+    --background-color: #ffffff; /* White for maximum contrast */
+    --text-color: #222222; /* Slightly darker grey for better readability */
+    --border-radius: 8px;
+}
+
 #project-list {
     display: grid;
     grid-template-columns: 30% 30% 30%;
@@ -11,3 +22,141 @@
     column-gap: 10px;
     row-gap: 10px;
 }
+
+
+
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Buttons */
+button {
+  font-family: 'Oswald', sans-serif;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--secondary-color);
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+  }
+  
+  form button {
+    width: 100%;
+    font-size: 1.2rem;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cards (Optional for Image/Text Combo) */
+  .card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .card img {
+    width: 100%;
+    display: block;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-family: 'Oswald', sans-serif;
+    color: var(--primary-color);
+    margin: 0 0 0.5rem;
+  }
+  
+  .card-description {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      font-size: 0.9rem;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    form {
+      padding: 1.5rem;
+    }
+  
+    form button {
+      font-size: 1rem;
+    }
+  }
