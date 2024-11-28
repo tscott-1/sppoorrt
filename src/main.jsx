@@ -7,6 +7,7 @@ import "./Main.css";
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
+import ClubPage from "./pages/ClubPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/signup", element: <SignupPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
+      { path: "/clubs/:id", element: <ClubPage /> },
       { path: "/contact", element: <ContactPage /> },
     ],
   },

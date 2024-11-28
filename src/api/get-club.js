@@ -1,9 +1,9 @@
 async function getClub(clubId) {
-    const url = `${import.meta.env.VITE_API_URL}/clubs/${clubIdId}`;
+    const url = `${import.meta.env.VITE_API_URL}/clubs/${clubId}`;
     const response = await fetch(url, { method: "GET" });
   
     if (!response.ok) {
-      const fallbackError = `Error fetching project with id ${clubIdId}`;
+      const fallbackError = `Error fetching club with id ${clubIdId}`;
   
       const data = await response.json().catch(() => {
         throw new Error(fallbackError);
