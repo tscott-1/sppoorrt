@@ -37,6 +37,10 @@ function LoginForm() {
         }
     };
 
+    const handleSignup = (event) => {
+        navigate("/signup");
+    };
+
 
     return (
       <form>
@@ -58,9 +62,16 @@ function LoginForm() {
                  onChange={handleChange}
             />
         </div>
+        <div>
             <button type="submit" onClick={handleSubmit}>
                 Login
             </button>
+        </div>
+        <div>
+            <button type="signup" onClick={handleSignup}>
+                Sign up
+            </button>
+        </div>
       </form>
     );
   }
