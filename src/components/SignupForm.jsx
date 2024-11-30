@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth.js";
 
 import postSignup from "../api/post-signup.js";
+import postLogin from "../api/post-login.js";
+
 
 function SignupForm() {
     const navigate = useNavigate(); 
+
+    const {auth, setAuth} = useAuth();
 
     const [details, setDetails] = useState({
           username: "",
@@ -30,8 +35,21 @@ function SignupForm() {
                     details.email,
                     details.password
                 ).then((response) => {
-                    console.log(response);
-                    navigate("/login");
+                  console.log(response);
+                  // event.preventDefault();
+                  if (details.username && details.password) {
+                      postLogin(
+                          details.username,
+                          details.password
+                      ).then((loginresponse) => {
+                          window.localStorage.setItem("token", loginresponse.token);
+                        setAuth({
+                            token: loginresponse.token,
+                        });
+                          navigate("/");
+                      });
+                  }
+                    // navigate("/login");
             });
             }
     };
