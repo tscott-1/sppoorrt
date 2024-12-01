@@ -12,6 +12,7 @@ function NavBar() {
   return (
     <div>
       <nav>
+        <img class = "logo" src="./images/SPPORRT_LOGO.png" alt="Logo" />
         <Link to="/">Home</Link>
         {auth.token ? (
           <Link to="/" onClick={handleLogout}>

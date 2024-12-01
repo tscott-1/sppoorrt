@@ -28,6 +28,13 @@ nav {
 
 }
 
+nav img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+
+}
+
 /* unvisited link */
 a:link {
     color: red;
@@ -168,6 +175,8 @@ form label {
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
   }
+
+
   
   /* Responsive Design */
   @media (max-width: 768px) {

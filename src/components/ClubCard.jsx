@@ -6,7 +6,7 @@ function ClubCard(props) {
   const clubLink = `clubs/${clubData.id}`;
 
   return (
-    <div className="club-card">
+    <div className="card">
       <Link to={clubLink}>
         <img src={clubData.club_logo} />
         <h3>{clubData.club}</h3>
