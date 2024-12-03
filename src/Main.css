@@ -28,6 +28,11 @@ nav {
 
 }
 
+nav .img {
+  width: 100%;
+  display: block;
+}
+
 
 
 /* unvisited link */

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useClub from "../hooks/use-club";
 import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
+import CreateprojectForm from "../components/CreateprojectForm";
 
 function ClubPage() {
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useClub hook.
@@ -47,7 +48,13 @@ function ClubPage() {
           {filteredProjects.map((projectData) => {
             return <ProjectCard key={projectData.id} projectData={projectData} />;
           })}
-      </div> 
+      </div>      
+      </div>
+      <div>
+      <h1>Create Project</h1>
+      <div id="create-project">
+          return <CreateprojectForm />;
+      </div>      
       </div>
       </>
     );

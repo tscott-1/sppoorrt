@@ -1,7 +1,7 @@
 const token = window.localStorage.getItem("token")
 
-async function postCreateclub(club, description, club_size, club_location, club_logo, sport, is_active ) {
-    const url = `${import.meta.env.VITE_API_URL}/clubs/`;
+async function postCreateproject(title, description, goal, image, fund_type, is_open, end_date, member_only, owner_club ) {
+    const url = `${import.meta.env.VITE_API_URL}/projects/`;
     const response = await fetch(url, {
       method: "POST", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
       headers: {
@@ -9,19 +9,20 @@ async function postCreateclub(club, description, club_size, club_location, club_
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "club": club,
+        "title": title,
         "description": description,
-        "club_size": club_size,
-        "club_location": club_location,
-        "club_logo": club_logo,
-        "sport": sport,
-        "is_active": is_active,
+        "image": image,
+        "fund_type": fund_type,
+        "is_open": is_open,
+        "end_date": end_date,
+        "member_only": member_only,
+        "owner_club": owner_club,
       }),
     });
 
   
     if (!response.ok) {
-      const fallbackError = `Error trying to create club`;
+      const fallbackError = `Error trying to create project`;
   
       const data = await response.json().catch(() => {
         throw new Error(fallbackError);
@@ -34,4 +35,4 @@ async function postCreateclub(club, description, club_size, club_location, club_
     return await response.json();
   }
   
-  export default postCreateclub;
+  export default postCreateproject;
