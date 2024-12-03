@@ -13,6 +13,7 @@ function CreateclubForm() {
           club_location: "",
           club_logo: "",
           sport: "",
+          is_active: "true"
     });
 
 
@@ -35,6 +36,7 @@ function CreateclubForm() {
                     details.club_location,
                     details.club_logo,
                     details.sport,
+                    details.is_active
                 ).then((response) => {
                     console.log(response);
                     navigate("/");
@@ -88,7 +90,7 @@ function CreateclubForm() {
             />
         </div>
         <div>
-          <label htmlFor="sport">First Name:</label>
+          <label htmlFor="sport">Sport:</label>
           <input
                   type="id"
                   id="sport"

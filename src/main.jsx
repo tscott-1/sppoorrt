@@ -11,6 +11,7 @@ import ClubPage from "./pages/ClubPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import CreateclubPage from "./pages/CreateclubPage.jsx";
 
 // Here we import our components
 import NavBar from "./components/NavBar.jsx";
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       { path: "/signup", element: <SignupPage /> },
       { path: "/project/:id", element: <ProjectPage /> },
       { path: "/clubs/:id", element: <ClubPage /> },
+      { path: "/createclub", element: <CreateclubPage/> },
       { path: "/contact", element: <ContactPage /> },
     ],
   },

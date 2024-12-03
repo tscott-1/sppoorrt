@@ -28,12 +28,7 @@ nav {
 
 }
 
-nav img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
 
-}
 
 /* unvisited link */
 a:link {
