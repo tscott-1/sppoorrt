@@ -40,8 +40,8 @@ function ClubPage() {
         <h3>{`Active Club: ${club.is_active}`}</h3>
         <h3>{`Club Location: ${club.club_location}`}</h3>
         <h3>{club.club_size}</h3>
-        <h3>{club.sport}</h3>
-        <h3>{club.club_owner}</h3>
+        <h3>{club.sportdetails.sport}</h3>
+        <h3>{club.owner.first_name}</h3>
         </div>
       </div>
       <div>
@@ -55,7 +55,7 @@ function ClubPage() {
       <div>
       <h1>Create Project</h1>
       <div id="create-project">
-          return <CreateprojectForm />;
+          <CreateprojectForm />;
       </div>      
       </div>
       </>
