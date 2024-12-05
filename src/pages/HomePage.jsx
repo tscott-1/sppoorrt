@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 import useClubs from "../hooks/use-clubs";
 import ClubCard from "../components/ClubCard";
 import "./HomePage.css";
+import UserGreeting from "../components/UserGreeting"
 
 function HomePage() {
   const { projects } = useProjects(); 
