@@ -10,7 +10,8 @@ function ClubPage() {
     const { projects } = useProjects(); 
     // useClub returns three pieces of info, so we need to grab them all here
     const { club, isLoading, error } = useClub(id); 
-    
+   
+      
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -39,7 +40,8 @@ function ClubPage() {
         <h3>{`Active Club: ${club.is_active}`}</h3>
         <h3>{`Club Location: ${club.club_location}`}</h3>
         <h3>{club.club_size}</h3>
-        <h3>{club.sport.sport}</h3>
+        <h3>{club.sport}</h3>
+        <h3>{club.club_owner}</h3>
         </div>
       </div>
       <div>

@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import postCreateproject from "../api/post-createproject.js";
 
+// function clubpage() {
+//   let params = useParams()
+//   params.postId
+// }
+
 function CreateprojectForm() {
     const navigate = useNavigate(); 
+
+    // const useclub = () =>
 
     const [details, setDetails] = useState({
           title: "",
@@ -12,10 +20,10 @@ function CreateprojectForm() {
           goal: "",
           image: "",
           fund_type: "",
-          is_open: "true",
+          is_open: "True",
           end_date: "",
-          member_only: "false",
-          owner_club: ""
+          member_only: "False",
+          owner_club: 34,
     });
 
 
@@ -30,8 +38,8 @@ function CreateprojectForm() {
 
     const handleSubmit = (event) => {
             event.preventDefault();
-            if (details.title) {
-                postCreateproject(
+            if (details.title && details.owner_club) {
+              postCreateproject(
                     details.title,
                     details.description,
                     details.goal,
@@ -43,7 +51,6 @@ function CreateprojectForm() {
                     details.owner_club
                 ).then((response) => {
                     console.log(response);
-                    navigate("/");
             });
             }
     };
@@ -69,7 +76,7 @@ function CreateprojectForm() {
             />
         </div>
         <div>
-          <label htmlFor="goal">Club Size:</label>
+          <label htmlFor="goal">Fundraiser Goal:</label>
           <input 
                 type="int" 
                 id="goal" 
@@ -100,15 +107,6 @@ function CreateprojectForm() {
                   type="date"
                   id="end_date"
                   placeholder="Enter Fundraiser end date"
-                  onChange={handleChange}
-            />
-        </div>
-        <div>
-          <label htmlFor="owner_club">Owner Club:</label>
-          <input
-                  type="id"
-                  id="owner_club"
-                  placeholder="Enter owner club"
                   onChange={handleChange}
             />
         </div>
