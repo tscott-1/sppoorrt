@@ -5,75 +5,94 @@ import postLogin from "../api/post-login.js";
 import { useAuth } from "../hooks/use-auth.js";
 
 function LoginForm() {
-    const navigate = useNavigate(); 
-    const {auth, setAuth} = useAuth();
+  const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
-    const [credentials, setCredentials] = useState({
-        username: "",
-        password: "",
-    });
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
 
-    const handleChange = (event) => {
-        const { id, value } = event.target;
-        setCredentials((prevCredentials) => ({
-            ...prevCredentials,
-            [id]: value,
-        }));
-    };
+  const [error, setError] = useState(null); // For error handling
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (credentials.username && credentials.password) {
-            postLogin(
-                credentials.username,
-                credentials.password
-            ).then((response) => {
-                window.localStorage.setItem("token", response.token);
-              setAuth({
-                  token: response.token,
-              });
-                navigate("/");
-            });
-        }
-    };
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setCredentials((prevCredentials) => ({
+      ...prevCredentials,
+      [id]: value,
+    }));
+  };
 
-    const handleSignup = (event) => {
-        navigate("/signup");
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError(null);
 
+    if (credentials.username && credentials.password) {
+      try {
+        const response = await postLogin(credentials.username, credentials.password);
 
-    return (
-      <form>
-        <div>
-            <label htmlFor="username">Username:</label>
-            <input
-                  type="text"
-                  id="username"
-                  placeholder="Enter username"
-                  onChange={handleChange}
-            />
-        </div>
-        <div>
-            <label htmlFor="password">Password:</label>
-            <input
-                 type="password"
-                 id="password"
-                 placeholder="Password"
-                 onChange={handleChange}
-            />
-        </div>
-        <div>
-            <button type="submit" onClick={handleSubmit}>
-                Login
-            </button>
-        </div>
-        <div>
-            <button type="signup" onClick={handleSignup}>
-                Sign up
-            </button>
-        </div>
-      </form>
-    );
-  }
-  
-  export default LoginForm;
+        // Save the token and user info in local storage
+        window.localStorage.setItem("token", response.token);
+        window.localStorage.setItem("user_id", response.user_id);
+        window.localStorage.setItem("user_email", response.email);
+
+        // Update auth context
+        setAuth({
+          token: response.token,
+          user_id: response.user_id,
+          user_email: response.email,
+        });
+
+        // Navigate to the home page
+        navigate("/");
+      } catch (err) {
+        setError("Invalid username or password");
+      }
+    } else {
+      setError("Both fields are required");
+    }
+  };
+
+  const handleSignup = (event) => {
+    event.preventDefault(); // Prevent unintended behavior
+    navigate("/signup");
+  };
+
+  return (
+    <form>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter username"
+          value={credentials.username}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+        />
+      </div>
+      {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error messages */}
+      <div>
+        <button type="submit" onClick={handleSubmit}>
+          Login
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={handleSignup}>
+          Sign up
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export default LoginForm;

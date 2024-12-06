@@ -1,23 +1,31 @@
 import React from "react";
-import useUserData from "../hooks/get-user";
+import useUser from "../hooks/use-user.js";
+
+
 
 function UserGreeting() {
-    const { user, loading, error } = useUserData();
+  const user_id = localStorage.getItem('user_id')
+  const { user, loading, error } = useUser(user_id);
+  
 
-    if (loading) {
-        return <p>Loading user info...</p>;
-    }
+  if (loading) {
+    return <p>Loading current user...</p>;
+  }
 
-    if (error) {
-        return <p>Error fetching user info: {error.message}</p>;
-    }
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
-    return (
-        <div>
-            <h1>Welcome, {user.first_name}!</h1>
-            <p>Your User ID: {user.id}</p>
-        </div>
-    );
+  if (!user) {
+    return <p>No user logged in</p>;
+  }
+
+  return (
+    <div>
+      <h1>Welcome back, {user.first_name}!</h1>
+      <p>Your User ID: {user.id}</p>
+    </div>
+  );
 }
 
 export default UserGreeting;

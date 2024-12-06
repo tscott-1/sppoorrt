@@ -1,6 +1,13 @@
+const token = window.localStorage.getItem("token")
+
 async function getUser(userId) {
     const url = `${import.meta.env.VITE_API_URL}/users/${userId}`;
-    const response = await fetch(url, { method: "GET" });
+    const response = await fetch(url, {
+       method: "GET" ,
+       headers: {
+        "Authorization": `Token ${token}`,
+      },
+      });
   
     if (!response.ok) {
       const fallbackError = `Error fetching project with id ${userId}`;
@@ -17,3 +24,4 @@ async function getUser(userId) {
   }
   
   export default getUser;
+
