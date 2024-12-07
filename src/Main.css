@@ -2,13 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Roboto:wght@400;700&display=swap');
 
 :root {
-    --primary-color: #0056b3; /* Deeper blue for better contrast */
-    --secondary-color: #d9372a; /* Deeper red-orange for clarity */
-    --background-color: #ffffff; /* White for maximum contrast */
-    --text-color: #222222; /* Slightly darker grey for better readability */
-    --border-radius: 8px;
+  --primary-color: #0056b3; 
+  --secondary-color: #c71585; /* A deeper magenta for sufficient contrast (e.g., "Medium Violet Red") */
+  --background-color: #ffffff; /* White for maximum contrast */
+  --text-color: #222222; /* Slightly darker grey for better readability */
+  --border-radius: 8px; /* Consistent radius for smooth UI */
 }
-
 /* 
 
 
@@ -42,12 +41,12 @@ a:link {
   
   /* visited link */
   a:visited {
-    color: green;
+    color: var(--primary-color)
   }
   
   /* mouse over link */
   a:hover {
-    color: hotpink;
+    color: var(--secondary-color);
   }
   
   /* selected link */
