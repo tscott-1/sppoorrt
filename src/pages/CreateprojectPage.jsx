@@ -4,15 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CreateprojectPage() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem("authToken");
-        if (!token) {
-          // Redirect to login if token doesn't exist
-          navigate("/login");
-        }
-      }, [navigate]);
+    // useEffect(() => {
+    //     const token = localStorage.getItem("authToken");
+    //     if (!token) {
+    //       // Redirect to login if token doesn't exist
+    //       navigate("/login");
+    //     }
+    // }, [navigate]);
+
     return <CreateprojectForm />;
 }
 

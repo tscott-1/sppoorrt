@@ -2,24 +2,36 @@ import { useParams } from "react-router-dom";
 import useClub from "../hooks/use-club";
 import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
-import CreateprojectForm from "../components/CreateprojectForm";
 import useUser from "../hooks/use-user";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/use-auth.js";
 
 function ClubPage() {
     const navigate = useNavigate();
+    const {auth, setAuth} = useAuth();   
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useClub hook.
     const { id } = useParams();
     const { projects } = useProjects(); 
+
+    const user_id = auth.token ? window.localStorage.getItem("user_id") : null;
+    const { user, isLoading: isUserLoading, error: userError } = user_id ? useUser(user_id) : { user: null, isLoading: false, error: null}; 
+  
+
     // useClub returns three pieces of info, so we need to grab them all here
-    const { club, isLoading, error } = useClub(id); 
-      
-    if (isLoading) {
-        return (<p>loading...</p>)
+    
+    const { club, isLoading: isClubLoading, error: clubError } = useClub(id); 
+
+
+    if (isUserLoading || isClubLoading) {
+      return <p>Loading...</p>;
     }
-       
-    if (error) {
-        return (<p>{error.message}</p>)
+  
+    // Handle errors for user or club
+    if (userError) {
+      return <p>User Error: {userError.message}</p>;
+    }
+    if (clubError) {
+      return <p>Club Error: {clubError.message}</p>;
     }
 
       // Filter projects where projectData.club.id matches the club's id
@@ -30,7 +42,7 @@ function ClubPage() {
     const handleProject = (event) => {
       event.preventDefault(); // Prevent unintended behavior
       // navigate("/createproject", { state: { id } });
-      navigate("createproject/");
+      navigate(`createproject/`);
     };
 
 

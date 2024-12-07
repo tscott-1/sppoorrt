@@ -22,13 +22,7 @@ function NavBar() {
           </Link>
           ) : (
           <Link to="/login">Login</Link>
-        )}
-        {auth.token ? (
-          <Link to="/createclub">
-            Create Club
-          </Link> 
-          ) : ([])
-        }
+        )} 
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
       </nav>
