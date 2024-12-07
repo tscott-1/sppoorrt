@@ -10,7 +10,7 @@ const HandleLogin = () => {
       // Redirect to login if token doesn't exist
       navigate('/login');
     }
-  }, [navigate]);
+  }, [navigate()]);
 
   return null; // This component doesn't render anything
 };

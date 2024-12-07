@@ -3,14 +3,16 @@ import useClub from "../hooks/use-club";
 import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
 import CreateprojectForm from "../components/CreateprojectForm";
+import useUser from "../hooks/use-user";
+import { useNavigate } from "react-router-dom";
 
 function ClubPage() {
+    const navigate = useNavigate();
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useClub hook.
     const { id } = useParams();
     const { projects } = useProjects(); 
     // useClub returns three pieces of info, so we need to grab them all here
     const { club, isLoading, error } = useClub(id); 
-   
       
     if (isLoading) {
         return (<p>loading...</p>)
@@ -24,6 +26,13 @@ function ClubPage() {
     const filteredProjects = (projects || []).filter(
       (projectData) => projectData.club.id === parseInt(id, 10)
     );
+
+    const handleProject = (event) => {
+      event.preventDefault(); // Prevent unintended behavior
+      // navigate("/createproject", { state: { id } });
+      navigate("createproject/");
+    };
+
 
     return (
       <>
@@ -53,9 +62,10 @@ function ClubPage() {
       </div>      
       </div>
       <div>
-      <h1>Create Project</h1>
-      <div id="create-project">
-          <CreateprojectForm />;
+      <div>
+        <button type="button" onClick={handleProject}>
+          Create Project
+        </button>
       </div>      
       </div>
       </>

@@ -57,7 +57,7 @@ function CreateprojectForm() {
                         details.owner_club
                   ).then((response) => {
                         console.log(response);
-                        window.location.reload();
+                        navigate(0);
                   });
                   }
       };
