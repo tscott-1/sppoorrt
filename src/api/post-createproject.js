@@ -1,8 +1,6 @@
-const token = window.localStorage.getItem("token")
-
 async function postCreateproject(title, description, goal, image, fund_type, is_open, end_date, member_only, owner_club ) {
   const url = `${import.meta.env.VITE_API_URL}/projects/`;
-  
+  const token = window.localStorage.getItem("token")
   // Create the request body object
   const requestBody = {
       "title": title,

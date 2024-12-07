@@ -32,7 +32,7 @@ function CreatepledgeForm() {
         details.project
       ).then((response) => {
         console.log(response);
-        window.location.reload();
+        navigate(0);
       });
     }
   };

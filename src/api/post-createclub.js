@@ -1,7 +1,6 @@
-const token = window.localStorage.getItem("token")
-
 async function postCreateclub(club, description, club_size, club_location, club_logo, sport, is_active ) {
-    const url = `${import.meta.env.VITE_API_URL}/clubs/`;
+  const token = window.localStorage.getItem("token")  
+  const url = `${import.meta.env.VITE_API_URL}/clubs/`;
     const response = await fetch(url, {
       method: "POST", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
       headers: {

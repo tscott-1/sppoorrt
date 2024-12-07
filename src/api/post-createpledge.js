@@ -1,6 +1,5 @@
-const token = window.localStorage.getItem("token")
-
 async function postCreatepledge(amount, comment, anonymous , project ) {
+    const token = window.localStorage.getItem("token")
     const url = `${import.meta.env.VITE_API_URL}/pledges/`;
 
   // Create the request body object
