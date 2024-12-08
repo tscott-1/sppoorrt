@@ -25,7 +25,7 @@ function CreateprojectPage() {
     // Update `isOwner` when `user_id` or `club` changes
     useEffect(() => {
         if (club && user_id) {
-            setIsOwner(parseInt(user_id, 10) === club.owner.id);
+            setIsOwner(parseInt(user_id, 10) === club.club_owner.id);
         }
     }, [user_id, club]);
 

@@ -35,7 +35,7 @@ function ProjectPage() {
             {project.pledges.map((pledgeData, key) => {
                 return (
                     <li key={key}>
-                        {pledgeData.amount} from {pledgeData.anonymous ? "Anonymous" : pledgeData.supporter}
+                        {pledgeData.amount} from {pledgeData.anonymous ? "Anonymous" : pledgeData.supporter.username}
 
                     </li>
                   );

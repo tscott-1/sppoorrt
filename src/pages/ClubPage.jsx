@@ -28,7 +28,7 @@ function ClubPage() {
     // Update `isOwner` when `user_id` or `club` changes
     useEffect(() => {
         if (club && user_id) {
-            setIsOwner(parseInt(user_id, 10) === club.owner.id);
+            setIsOwner(parseInt(user_id, 10) === club.club_owner.id);
         }
     }, [user_id, club]);
 
@@ -73,8 +73,8 @@ function ClubPage() {
         <h3>{`Club Location: ${club.club_location}`}</h3>
         <h3>{club.club_size}</h3>
         <h3>{club.sportdetails.sport}</h3>
-        <h3>{club.owner.first_name}</h3>
-        <h3>{club.owner.id}</h3>
+        <h3>{club.club_owner.first_name}</h3>
+        <h3>{club.club_owner.id}</h3>
         <h3>{user_id}</h3>
         </div>
       </div>
