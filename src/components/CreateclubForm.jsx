@@ -39,6 +39,7 @@ function CreateclubForm() {
                     details.is_active
                 ).then((response) => {
                     console.log(response);
+                    console.log(details);
                     navigate("/");
             });
             }
@@ -47,7 +48,7 @@ function CreateclubForm() {
     return (
       <form>
         <div>
-        <label htmlFor="club">Username:</label>
+        <label htmlFor="club">Club:</label>
             <input
                   type="text"
                   id="club"
@@ -56,7 +57,7 @@ function CreateclubForm() {
             />
         </div>
         <div>
-          <label htmlFor="description">First Name:</label>
+          <label htmlFor="description">Description:</label>
           <input
                   type="text"
                   id="description"
@@ -98,7 +99,7 @@ function CreateclubForm() {
                   onChange={handleChange}
             />
         </div>
-        <button type="submit" onClick={handleSubmit}>Sign up</button>
+        <button type="submit" onClick={handleSubmit}>Create Club</button>
       </form>
     );
   }

@@ -20,7 +20,7 @@ function HomePage() {
         })}
     </div> 
     <h1>Clubs</h1>  
-    <div>
+    <div className="add-sports-page-link">
     {auth.token ? (
           <Link to="/createclub">
             Add your Sports Club
