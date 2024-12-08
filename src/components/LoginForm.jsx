@@ -44,7 +44,7 @@ function LoginForm() {
         });
 
         // Navigate to the home page
-        navigate("/");
+        navigate(-1);
       } catch (err) {
         setError("Invalid username or password");
       }
