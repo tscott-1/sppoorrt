@@ -40,7 +40,7 @@ function CreatepledgeForm() {
   return (
     <form>
       <div>
-        <label htmlFor="amount">Amount:</label>
+        <label>Amount:</label>
         <input
           type="number"
           id="amount"
@@ -49,7 +49,7 @@ function CreatepledgeForm() {
         />
       </div>
       <div>
-        <label htmlFor="comment">Comment:</label>
+        <label>Comment:</label>
         <input
           type="text"
           id="comment"
@@ -57,17 +57,16 @@ function CreatepledgeForm() {
           onChange={handleChange}
         />
       </div>
-      <div style={{ display: "flex", alignItems: "center", marginTop: "10px" }}>
+      <div>
         <input
           type="checkbox"
           id="anonymous"
           checked={details.anonymous}
           onChange={handleChange}
-          style={{ marginRight: "8px" }}
         />
-        <label htmlFor="anonymous">Pledge anonymously</label>
+        <label for="anonymous" id="checkboxlabel"> Pledge anonymously</label>
       </div>
-      <button type="submit" onClick={handleSubmit} style={{ marginTop: "15px" }}>
+      <button type="submit" onClick={handleSubmit}>
         Add a pledge
       </button>
     </form>

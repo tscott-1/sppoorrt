@@ -72,7 +72,7 @@ function ClubPage() {
         <h3>{`Active Club: ${club.is_active}`}</h3>
         <h3>{`Club Location: ${club.club_location}`}</h3>
         <h3>{club.club_size}</h3>
-        <h3>{club.sportdetails.sport}</h3>
+        <h3>{club.sport_id.sport}</h3>
         <h3>{club.club_owner.first_name}</h3>
         <h3>{club.club_owner.id}</h3>
         <h3>{user_id}</h3>
