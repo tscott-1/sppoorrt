@@ -10,13 +10,8 @@ function ProjectPage() {
     const { id } = useParams();
     // useProject returns three pieces of info, so we need to grab them all here
     const { project, isLoading, error } = useProject(id); 
-    // Calculate the total amount pledged
-    const totalPledged = project.pledges.reduce((total, pledge) => total + pledge.amount, 0);
-    // Calculate progress percentage
-    const progressPercentage = Math.min((totalPledged / project.goal) * 100, 100);
 
-
-    
+      
     if (isLoading) {
         return (<p>loading...</p>)
     }
@@ -24,6 +19,19 @@ function ProjectPage() {
     if (error) {
         return (<p>{error.message}</p>)
     }
+
+    if (!project) {
+        return <p>No project found</p>;
+    }
+
+    const totalPledged = project.pledges ? 
+        project.pledges.reduce((total, pledge) => total + pledge.amount, 0) 
+        : 0;
+    
+    const progressPercentage = project.goal 
+        ? Math.min((totalPledged / project.goal) * 100, 100) 
+        : 0;
+
 
     return (
       <>
@@ -57,7 +65,7 @@ function ProjectPage() {
             <div style={{ fontSize: "18px", marginBottom: "10px" }}>
                 Raised ${totalPledged} of ${project.goal}
             </div>
-            <div style={{ background: "#ddd", borderRadius: "8px", overflow: "hidden", height: "20px", width: "100%" }}>
+            <div style={{ background: "#ddd", borderRadius: "8px", overflow: "hidden", height: "20px", width: "60%", }}>
                 <div
                     style={{
                         width: `${progressPercentage}%`,
@@ -73,10 +81,10 @@ function ProjectPage() {
         <ul>
             {project.pledges.map((pledgeData, key) => {
                 return (
-                    <ul key={key}>
+                    <li key={key}>
                         <span id="pledgedetails">${pledgeData.amount} from {pledgeData.anonymous ? "Anonymous" : pledgeData.supporter.username}</span> <br></br>
                         {pledgeData.comment}
-                    </ul>
+                    </li>
                   );
               })}
           </ul>

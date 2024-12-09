@@ -21,6 +21,8 @@ function CreateprojectPage() {
     
     const { club, isLoading: isClubLoading, error: clubError } = useClub(id); 
 
+    
+
     const [isOwner, setIsOwner] = useState(false);
     // Update `isOwner` when `user_id` or `club` changes
     useEffect(() => {

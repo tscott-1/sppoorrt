@@ -21,6 +21,7 @@ function CreateprojectForm() {
       return endDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
     };
 
+   
       const [details, setDetails] = useState({
             title: "",
             description: "",
@@ -101,11 +102,17 @@ function CreateprojectForm() {
             </div>
             <div>
             <label htmlFor="fund_type">Fundraiser Type:</label>
-            <input 
-                  type="text" 
-                  id="fund_type" 
-                  placeholder="E:Equipment and Uniforms C:Competitions and Events F:Players Fees S:Coaching I:Club Infrastructure"
-                  onChange={handleChange} />
+            <select
+                  id="fund_type"
+                  value={details.fund_type}
+                  onChange={handleChange}>
+                        <option value="">--Select Fund Type--</option>
+                        <option value="E">Equipment and Uniforms</option>
+                        <option value="C">Competitions and Events</option>
+                        <option value="F">Players Fees</option>
+                        <option value="S">Coaching</option>
+                        <option value="I">Club Infrastructure</option>
+            </select>
             </div>
             
             <div>

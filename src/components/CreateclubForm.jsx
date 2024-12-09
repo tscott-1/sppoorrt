@@ -67,11 +67,16 @@ function CreateclubForm() {
         </div>
         <div>
           <label htmlFor="club_size">Club Size:</label>
-          <input 
-                type="text" 
-                id="club_size" 
-                placeholder="S:<10 M:10-50 L:50-120 XL:>120"
-                onChange={handleChange} />
+          <select
+                id="club_size"
+                value={details.club_size}
+                onChange={handleChange}>
+                   <option value="">--Select Fund Type--</option>
+                      <option value="S">Less than 10 Members</option>
+                      <option value="M">10-50 Members</option>
+                      <option value="L">50-120 Members</option>
+                      <option value="XL">More than 120 Members</option>
+            </select>
         </div>
         <div>
           <label htmlFor="club_location">Club Location:</label>
