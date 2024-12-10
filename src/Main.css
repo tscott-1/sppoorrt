@@ -193,7 +193,23 @@ form label {
     color: var(--text-color);
   }
 
+/*navbar logo */
 
+  .logo {
+    font-size: 72px;
+    font-weight: bold;
+    color: var(--primary-color)
+  }
+
+  .green-o {
+    color: green;
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    background-color: green;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
   
   /* Responsive Design */
   @media (max-width: 768px) {
@@ -213,3 +229,4 @@ form label {
       font-size: 1rem;
     }
   }
+

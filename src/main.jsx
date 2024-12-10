@@ -14,6 +14,7 @@ import SignupPage from "./pages/SignupPage.jsx";
 import CreateclubPage from "./pages/CreateclubPage.jsx";
 import CreateprojectPage from "./pages/CreateprojectPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 // Here we import our components
 import NavBar from "./components/NavBar.jsx";
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
       { path: "/clubs/:id/createproject", element: <CreateprojectPage/> },
       { path: "/contact", element: <ContactPage /> },
       { path: "/user", element: <UserPage /> },
+      { path: "/admin", element: <AdminPage /> },
     ],
   },
 ]);

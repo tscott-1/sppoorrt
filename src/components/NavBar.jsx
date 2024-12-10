@@ -12,10 +12,15 @@ function NavBar() {
   };
 
   return (
+    <>
     <div>
+
+
       <nav>
-        <img src="../images/SPPORRT_LOGO.png" alt="SPPOORRT" />
-        <Link to="/">Home</Link>
+      <div class="logo">
+        SPP<span class="green-o"></span><span class="green-o"></span>RRT
+    </div>
+       <Link to="/">Home</Link>
         {auth.token ? (
           <Link to="/" onClick={handleLogout}>
             Log Out
@@ -29,6 +34,7 @@ function NavBar() {
       {/* React Router will pass components into the <Outlet /> based on the path */}
       <Outlet />
     </div>
+    </>  
   );
 }
 
