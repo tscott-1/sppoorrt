@@ -12,11 +12,10 @@ function SportsTable() {
         return (<p>{error.message}</p>)
     }
 
-    console.log(sports)
- return sports.map(({sport, sport_type}) => {
+ return sports.map(({id,sport, sport_type}) => {
     return (
         <>
-        <div>{sport}</div> <div>{sport_type}</div>
+        <div key={id}>{sport}</div> <div>{sport_type}</div>
         </>
     )
  })

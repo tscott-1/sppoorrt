@@ -7,22 +7,26 @@ export default function useUser(user_id) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
-  if (!user_id) {
-    return { user: null, isloading: false, error:null };
+  useEffect(() => {
+   // If no user_id, set loading to false and exit
+   if (!user_id) {
+    setUser(null);
+    setIsLoading(false);
+    return;
   }
 
-  useEffect(() => {
-    getUser(user_id)
-      .then((user) => {
-        setUser(user);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
+  setIsLoading(true);
+  setError(null);
 
- 
+  getUser(user_id)
+    .then((user) => {
+      setUser(user);
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      setError(error);
+      setIsLoading(false);
+    });
   }, [user_id]);
 
 

@@ -3,15 +3,30 @@ import CreatesportForm from "../components/CreatesportForm";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.js";
 import useUser from "../hooks/use-user";
+import { useEffect } from "react";
 
 function AdminPage() {
     const navigate = useNavigate();
     const {auth, setAuth} = useAuth();
+
     
     const user_id = auth.token ? window.localStorage.getItem("user_id") : null;
-    
 
-    const {user, isLoading, error } = useUser(user_id) 
+    const {user, isLoading, error } = useUser(user_id) ;
+    // console.log({user.is_superuser});
+
+    useEffect(() => {
+        if(!isLoading) {
+            console.log("User object:", user);
+            console.log("Is superuser:", user?.is_superuser);
+            // If there's no user or the user is not staff, navigate to home
+            if (!user || !user.is_superuser) {
+                navigate("/");
+        }
+        }
+    }
+    , [user, isLoading, navigate]);
+
 
     if (isLoading) {
       return <p>Loading...</p>;
@@ -19,28 +34,19 @@ function AdminPage() {
   
     // Handle errors for user or club
     if (error) {
-      return <p>User Error: {Error.message}</p>;
+      return <p>User Error: {error.message}</p>;
     }
 
     return (
     <>
-    {user.is_staff ? (
-        <>
-        <h1>{`Welcome ${user.username}`}</h1>
-           <div>
-           <SportsTable />;
-            </div>
-            <div>
-              <CreatesportForm />;
-          </div>  
-        </>
-        ) : (
-        <>
-        <h1>placeholder</h1>
-        </>
-        )
-    }
-</>
+        <div>
+        <SportsTable />;
+        </div>
+        <div>
+            <CreatesportForm />;
+        </div>  
+    </>
+
     );
       
 }
