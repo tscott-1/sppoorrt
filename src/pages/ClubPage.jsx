@@ -55,6 +55,10 @@ function ClubPage() {
       navigate(`createproject/`);
     };
 
+    const handleUpdate = (event) => {
+      event.preventDefault(); // Prevent unintended behavior
+      navigate(`updateclub/`);
+    };
 
 
     return (
@@ -77,11 +81,18 @@ function ClubPage() {
           </div>
               <div>
                 {isOwner && (
+                  <>
                     <div>
                         <button type="button" onClick={handleProject}>
                             Create Project
                         </button>
                     </div>
+                      <div>
+                      <button type="button" onClick={handleUpdate}>
+                          Update Club Details
+                      </button>
+                  </div>
+                  </>
                 )}
               </div>
         </div>
