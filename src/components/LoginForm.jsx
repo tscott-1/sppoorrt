@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import postLogin from "../api/post-login.js";
 import { useAuth } from "../hooks/use-auth.js";
+import { Link, Outlet } from "react-router-dom";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -87,9 +88,9 @@ function LoginForm() {
         </button>
       </div>
       <div>
-        <button type="button" onClick={handleSignup}>
-          Sign up
-        </button>
+        
+          Don't have an account?  <Link to="/signup">Sign up</Link> here.
+       
       </div>
     </form>
   );
