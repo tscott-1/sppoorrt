@@ -35,69 +35,75 @@ function ProjectPage() {
 
     return (
       <>
-      <div>
-        <div>
-        <img src={project.image} />
-        </div>
-        <div>
-        <h2>{project.title}</h2>
-        <h3>        
-            A project for the <br></br>{project.club.club} <br></br>A {project.club.sport_id.sport} Club
-        </h3>
-        <h3>
-        Open Since: {new Date(project.date_created).toLocaleDateString('en-US', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-        })}
-        </h3>
-        <h3>
-        Open until: {new Date(project.end_date).toLocaleDateString('en-US', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-        })}
-        </h3>
-        <h3>Status: {project.is_open ? "Taking Pledges" : "Pledges Closed"}</h3>
-        </div>
+      <div className="PageDisplay">
+      
+        <section className="hero1">
+            <img src={project.image} />
+        </section>
+        <section className="hero2">
+                <h1>{project.title}</h1>
+                <h2>        
+                    A project for the {project.club.club} - A {project.club.sport_id.sport} Club
+                </h2>
+                <h3>
+                    {project.description}
+                </h3>
+                <h3>
+                Open Since: {new Date(project.date_created).toLocaleDateString('en-US', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                })}
+                </h3>
+                <h3>
+                Open until: {new Date(project.end_date).toLocaleDateString('en-US', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                })}
+                </h3>
+                <h3>Status: {project.is_open ? "Taking Pledges" : "Pledges Closed"}</h3>
+        </section>
+   
         {/* Progress bar */}
-        <div style={{ margin: "20px 0" }}>
-            <div style={{ fontSize: "18px", marginBottom: "10px" }}>
-                Raised ${totalPledged} of ${project.goal}
-            </div>
-            <div style={{ background: "#ddd", borderRadius: "8px", overflow: "hidden", height: "20px", width: "60%", }}>
-                <div
-                    style={{
-                        width: `${progressPercentage}%`,
-                        background: "var(--primary-color)",
-                        height: "100%",
-                        transition: "width 0.5s ease",
-                    }}
-                ></div>
-            </div>
+    <div className="pledges">  
+        <div className="progressbar" style={{ margin: "20px 0" }}>
+                <div style={{ fontSize: "18px", marginBottom: "10px" }}>
+                    Raised ${totalPledged} of ${project.goal}
+                </div>
+                <div style={{ background: "#ddd", borderRadius: "8px", overflow: "hidden", height: "20px", width: "80%", }}>
+                    <div
+                        style={{
+                            width: `${progressPercentage}%`,
+                            background: "var(--primary-color)",
+                            height: "100%",
+                            transition: "width 0.5s ease",
+                        }}
+                    ></div>
+                </div>
         </div>
-
-        <h3>Pledges:</h3>
-        <ul>
-            {project.pledges.map((pledgeData, key) => {
-                return (
-                    <li key={key}>
-                        <span id="pledgedetails">${pledgeData.amount} from {pledgeData.anonymous ? "Anonymous" : pledgeData.supporter.username}</span> <br></br>
-                        {pledgeData.comment}
-                    </li>
-                  );
-              })}
-          </ul>
-      </div>
-      <div>
-      <h1>Pledge to this fund</h1>
-      <div id="create-pledge">
-        {auth.token ? 
-          <CreatepledgeForm /> :
-          <Link to="/login">Login to pledge</Link>
-        }
-      </div>  
-      </div>
+        <div>                
+            <h3>Pledges:</h3>
+            <ul>
+                {project.pledges.map((pledgeData, key) => {
+                    return (
+                        <li key={key}>
+                            <span id="pledgedetails">${pledgeData.amount} from {pledgeData.anonymous ? "Anonymous" : pledgeData.supporter.username}</span> <br></br>
+                            {pledgeData.comment}
+                        </li>
+                    );
+                })}
+            </ul>
+        </div>
+        <h1>Pledge to this fund</h1>
+        <div id="create-pledge">
+            {auth.token ? 
+            <CreatepledgeForm /> :
+            <Link to="/login">Login to pledge</Link>
+            }
+        </div>  
+    </div>
+    </div>
       </>
     );
 }

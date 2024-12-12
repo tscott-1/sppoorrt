@@ -2,7 +2,7 @@ import useProjects from "../hooks/use-projects";
 import ProjectCard from "../components/ProjectCard";
 import useClubs from "../hooks/use-clubs";
 import ClubCard from "../components/ClubCard";
-import "./HomePage.css";
+
 import { useAuth } from "../hooks/use-auth.js";
 import { Link, Outlet } from "react-router-dom";
 

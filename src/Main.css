@@ -10,12 +10,80 @@
 }
 
 
-*{
-  padding: 0;
-  margin: 0;
+ /* CSS Reset */
+ 
+ html {
   box-sizing: border-box;
+  font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: var(--text);
+  scroll-behavior: smooth;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+  
+
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+#pledgedetails {
+  font-weight: bold;
+  color: var(--secondary-color)
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Buttons */
+button {
+  font-family: 'Oswald', sans-serif;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background: var(--secondary-color);
+}
 
 /*navbar logo */
 
@@ -73,54 +141,22 @@ nav ul li{
 }
 
 
+#project-list {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
 
-@media (max-width: 768px) {
-  .DesktopNavigation {
-      display: none; /* Hide desktop navigation */
-  }
-
-  .MobileNavigation {
-      display: flex;
-      flex-direction: column; 
-
-      width: 100%;
-      background: #f9f9f9; 
-      padding: 1rem 0;
-      position: relative;
-  }
-
-  .HamburgerMenu {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      cursor: pointer;
-  }
-
-  .Navlinks {
-      display: flex;
-      flex-direction: column; 
-      align-items: center;
-      justify-content: flex-start;
-      width: 100%;
-      padding: 1rem 0;
-  }
-
-  .Navlinks ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      list-style: none; 
-  }
-
-
-  .Navlinks ul li:last-child {
-      border-bottom: none; 
-  }
+#club-list {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
 
 }
+
+
 
 
 
@@ -136,63 +172,8 @@ nav ul li{
     color: var(--secondary-color);
   }
   
-  /* selected link */
-  a:active {
-    color: blue;
-  }
 
 
-  
-
-/* General Styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-h1, h2, h3 {
-  font-family: 'Oswald', sans-serif;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-#pledgedetails {
-  font-weight: bold;
-  color: var(--secondary-color)
-}
-
-a {
-  text-decoration: none;
-  color: var(--secondary-color);
-}
-
-/* Container */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-/* Buttons */
-button {
-  font-family: 'Oswald', sans-serif;
-  background: var(--primary-color);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-bottom: 10px;
-}
-
-button:hover {
-  background: var(--secondary-color);
-}
 
 /* Form Styling */
 form {
@@ -330,8 +311,63 @@ form label {
   transition: background-color 0.3s ease;
 }
 
+/*Project and clubs pages */
+
+.PageDisplay {
+  /* border: 1px solid greenyellow; */
+  background-color: var(--base);
+  padding: 56px 16px;
+  border-radius: 10px;
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 
+.PageDisplay img {
+  border: 3px solid var(--brand);
+  padding: 2px;
+  height: auto;
+  min-width: 30%;
+}
+
+.hero1 {
+  padding: 16px 16px 16px 16px;
+  min-width:30%
+}
+
+.hero2 {
+  padding: 16px 56px 56px 56px;
+  min-width: 30%
+}
+
+.pledges {
+  padding: 16px 16px 16px 56px;
+  align-content: center;
+  justify-self: center;
+  min-width: 33%;
+}
+
+
+
+.pledgeform h1 {
+  justify-self: center;
+}
+
+@media (min-width: 768px) {
+
+
+  .PageDisplay {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 15px 2px;
+    border-radius: 10px;
+    margin: 5px 2px;
+  }
+
+}
 
   /* Responsive Design */
   @media (max-width: 768px) {
@@ -350,5 +386,68 @@ form label {
     form button {
       font-size: 1rem;
     }
+
+
+    .DesktopNavigation {
+        display: none; /* Hide desktop navigation */
+    }
+  
+    .MobileNavigation {
+        display: flex;
+        flex-direction: column; 
+  
+        width: 100%;
+        background: #f9f9f9; 
+        padding: 1rem 0;
+        position: relative;
+    }
+  
+    .HamburgerMenu {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+    }
+  
+    .Navlinks {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 1rem 0;
+    }
+  
+    .Navlinks ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none; 
+    }
+  
+  
+    .Navlinks ul li:last-child {
+        border-bottom: none; 
+    }
+  
+  
+    #project-list {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 10px;
+      row-gap: 10px;
+  }
+  
+  #club-list {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 10px;
+      row-gap: 10px;
+  
+  }
+  
   }
 
