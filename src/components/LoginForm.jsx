@@ -54,10 +54,6 @@ function LoginForm() {
     }
   };
 
-  const handleSignup = (event) => {
-    event.preventDefault(); // Prevent unintended behavior
-    navigate("/signup");
-  };
 
   return (
     <form>
