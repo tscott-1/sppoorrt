@@ -47,7 +47,7 @@ function CreateprojectPage() {
     <>
     {isOwner ? (
         <>
-        <h1>{`Welcome ${user.first_name}`}</h1>
+        <h1>{`Welcome ${user.username}`}</h1>
             <h2>{`Create Project for ${club.club}`}</h2>
               <div id="create-project">
               <CreateprojectForm />;
@@ -55,7 +55,7 @@ function CreateprojectPage() {
         </>
         ) : (
         <>
-        <h1>placeholder</h1>
+        <h2>To create a project for this club, contact: <span style={{color:'blue'}}> {club.club_owner.username}    </span>     email: <span style={{color:'blue'}}>{club.club_owner.email}</span></h2>
         </>
         )
     }

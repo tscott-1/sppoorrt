@@ -326,27 +326,33 @@ form label {
 
 
 .PageDisplay img {
-  border: 3px solid var(--brand);
+  border: 3px solid var(--primary-color);
   padding: 2px;
   height: auto;
-  min-width: 30%;
+  width: 100%;
+  display: block;
 }
 
 .hero1 {
   padding: 16px 16px 16px 16px;
-  min-width:30%
+  width: 100%
 }
 
 .hero2 {
   padding: 16px 56px 56px 56px;
-  min-width: 30%
+  width: 100%
+}
+
+.hero3 {
+  padding: 16px 56px 56px 56px;
+  width: 100%
 }
 
 .pledges {
   padding: 16px 16px 16px 56px;
   align-content: center;
   justify-self: center;
-  min-width: 33%;
+  width: 100%
 }
 
 
@@ -365,6 +371,35 @@ form label {
     padding: 15px 2px;
     border-radius: 10px;
     margin: 5px 2px;
+  }
+
+  .PageDisplay img {
+    border: 3px solid var(--brand);
+    padding: 2px;
+    height: auto;
+    
+  }
+  
+  .hero1 {
+    padding: 16px 16px 16px 16px;
+    width: calc(100%/3);
+  }
+  
+  .hero2 {
+    padding: 16px 56px 56px 56px;
+    width: calc(100%/3);
+  }
+  
+  .hero3 {
+    padding: 16px 56px 56px 56px;
+    width: calc(2*100%/3);
+  }
+  
+  .pledges {
+    padding: 16px 16px 16px 56px;
+    align-content: center;
+    justify-self: center;
+    width: calc(100%/3);
   }
 
 }

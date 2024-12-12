@@ -46,7 +46,7 @@ function ClubPage() {
 
       // Filter projects where projectData.club.id matches the club's id
     const filteredProjects = (projects || []).filter(
-      (projectData) => projectData.club.id === parseInt(id, 10)
+      (projectData) => projectData.club.id === parseInt(id, 10) && projectData.is_open
     );
 
 
@@ -59,41 +59,42 @@ function ClubPage() {
 
     return (
       <>
-      <div>
-        <div>
-        <img src={club.club_logo} />
+      <div className="PageDisplay">
+        <div className="hero1">
+          <img src={club.club_logo} />
         </div>
-        <div>
-        <h2>{club.club}</h2>
-        <h3>        
-            {club.description}
-        </h3>
-        {/* <h3>Created at: {club.date_created}</h3> */}
-        <h3>{`Active Club: ${club.is_active}`}</h3>
-        <h3>{`Club Location: ${club.club_location}`}</h3>
-        <h3>{club.club_size}</h3>
-        <h3>{club.sport_id.sport}</h3>
-        <h3>{club.club_owner.first_name}</h3>
-        <h3>{club.club_owner.id}</h3>
-        <h3>{user_id}</h3>
-        </div>
-      </div>
-      <div>
-      <h1>Projects</h1>
-      <div id="project-list">
-          {filteredProjects.map((projectData) => {
-            return <ProjectCard key={projectData.id} projectData={projectData} />;
-          })}
-      </div>      
-      <div>
-          {isOwner && (
+        <div className="hero3">
+          <div>
+            <h1>{club.club}</h1>
+            <h3>        
+                {club.description}
+            </h3>
+            <h3>{`Active Club: ${club.is_active}`}</h3>
+            <h3>{`Club Location: ${club.club_location}`}</h3>
+            {/* <h3>{club.club_size}</h3> */}
+            <h3>{club.sport_id.sport}</h3>
+            <h3>Contact: <span style={{color:'blue'}}> {club.club_owner.username}    </span>     email: <span style={{color:'blue'}}>{club.club_owner.email}</span></h3>
+          </div>
               <div>
-                  <button type="button" onClick={handleProject}>
-                      Create Project
-                  </button>
+                {isOwner && (
+                    <div>
+                        <button type="button" onClick={handleProject}>
+                            Create Project
+                        </button>
+                    </div>
+                )}
               </div>
-          )}
+        </div>
       </div>
+
+      <div>
+        <h1>Projects</h1>
+        <div id="project-list">
+            {filteredProjects.map((projectData) => {
+              return <ProjectCard key={projectData.id} projectData={projectData} />;
+            })}
+      </div>      
+      
       </div>
       </>
     );
