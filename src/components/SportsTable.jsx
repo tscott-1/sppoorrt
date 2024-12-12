@@ -12,14 +12,28 @@ function SportsTable() {
         return (<p>{error.message}</p>)
     }
 
- return sports.map(({id,sport, sport_type}) => {
     return (
-        <>
-        <div key={id}>{sport}</div> <div>{sport_type}</div>
-        </>
-    )
- })
-
+        <div className="sports-table-container">
+        <table className="sports-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Sport</th>
+                    <th>Sport Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                {sports.map(({id, sport, sport_type}) => (
+                    <tr key={id}>
+                        <td>{id}</td>
+                        <td>{sport}</td>
+                        <td>{sport_type}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        </div>
+    );
 }
 
 export default SportsTable

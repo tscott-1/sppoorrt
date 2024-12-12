@@ -7,13 +7,10 @@ function CreateclubForm() {
     const navigate = useNavigate(); 
 
     const [details, setDetails] = useState({
-          club: "",
-          description: "",
-          club_size: "",
-          club_location: "",
-          club_logo: "",
-          sport: "",
-          is_active: "true"
+           username: "",
+          first_name: "",
+          email: "",
+          password: "",
     });
 
 
