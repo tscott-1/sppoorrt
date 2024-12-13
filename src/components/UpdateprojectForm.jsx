@@ -2,12 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import postCreateproject from "../api/post-createproject.js";
+import putUpdateproject from "../api/put-updateproject";
 
+// function clubpage() {
+//   let params = useParams()
+//   params.postId
+// }
 
-function CreateprojectForm() {
+function UpdateprojectForm() {
       const navigate = useNavigate(); 
-      const { clubid } = useParams(); // Extract the id from the URL
+      const { id } = useParams(); // Extract the id from the URL
 
       // Function to calculate today's date + 30 days in YYYY-MM-DD format
       const getDefaultEndDate = () => {
@@ -27,15 +31,15 @@ function CreateprojectForm() {
             is_open: "True",
             end_date: getDefaultEndDate(), // Set default end_date to today + 30 days
             member_only: "False",
-            owner_club: clubid,
+            owner_club: id,
       });
 
       
       const handleChange = (event) => {
-            const { clubid, value } = event.target;
+            const { id, value } = event.target;
             setDetails((prevDetails) => ({
                   ...prevDetails,
-                  [clubid]: value,
+                  [id]: value,
             }));
       };
 
@@ -54,7 +58,7 @@ function CreateprojectForm() {
                         details.owner_club
                   ).then((response) => {
                         console.log(response);
-                        navigate(`/clubs/${clubid}`);
+                        navigate(`/clubs/${id}`);
                   });
                   }
       };

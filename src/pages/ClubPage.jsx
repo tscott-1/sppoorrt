@@ -6,12 +6,13 @@ import useUser from "../hooks/use-user";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.js";
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
 function ClubPage() {
     const navigate = useNavigate();
     const {auth, setAuth} = useAuth();
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useClub hook.
-    const { id } = useParams();
+    const { clubid } = useParams();
     const { projects } = useProjects(); 
 
  
@@ -22,7 +23,7 @@ function ClubPage() {
   
     // useClub returns three pieces of info, so we need to grab them all here
     
-    const { club, isLoading: isClubLoading, error: clubError } = useClub(id); 
+    const { club, isLoading: isClubLoading, error: clubError } = useClub(clubid); 
 
     const [isOwner, setIsOwner] = useState(false);
     // Update `isOwner` when `user_id` or `club` changes
@@ -46,7 +47,7 @@ function ClubPage() {
 
       // Filter projects where projectData.club.id matches the club's id
     const filteredProjects = (projects || []).filter(
-      (projectData) => projectData.club.id === parseInt(id, 10) && projectData.is_open
+      (projectData) => projectData.club.id === parseInt(clubid, 10) && projectData.is_open
     );
 
 
@@ -102,7 +103,7 @@ function ClubPage() {
         <h1>Projects</h1>
         <div id="project-list">
             {filteredProjects.map((projectData) => {
-              return <ProjectCard key={projectData.id} projectData={projectData} />;
+              return <ProjectCard key={projectData.projectid} projectData={projectData} />;
             })}
       </div>      
       

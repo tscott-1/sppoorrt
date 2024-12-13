@@ -7,9 +7,9 @@ import { Link, Outlet } from "react-router-dom";
 function ProjectPage() {
     const {auth, setAuth} = useAuth();
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useProject hook.
-    const { id } = useParams();
+    const { clubid, projectid } = useParams();
     // useProject returns three pieces of info, so we need to grab them all here
-    const { project, isLoading, error } = useProject(id); 
+    const { project, isLoading, error } = useProject(projectid); 
 
       
     if (isLoading) {
