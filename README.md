@@ -25,7 +25,7 @@ To Do:
 - [ ] Do a proper lookup for sports in clubs
 - [ ] Add admin option to navbar
 - [ ] Make navbar floating
-- [ ] Option to Edit Club + Form
+- [x] Option to Edit Club + Form
 - [ ] Option to Edit Project + Form
 - [ ] Option to Edit user + Form
 - [ ] Option to Delete Project
