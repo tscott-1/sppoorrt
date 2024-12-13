@@ -7,7 +7,7 @@ import useSports from "../hooks/use-sports"; // Add this import
 
 function UpdateClubForm() {
     const navigate = useNavigate(); 
-    const { id } = useParams();
+    const { clubid } = useParams();
     const { sports, isLoading: isSportsLoading, error: sportsError } = useSports();
 
     const [details, setDetails] = useState({
@@ -25,7 +25,7 @@ function UpdateClubForm() {
 
     useEffect(() => {
       // Fetch the current club's details
-      getClub(id)
+      getClub(clubid)
           .then((clubData) => {
               // Update the state with the fetched club data
               setDetails({
@@ -44,13 +44,13 @@ function UpdateClubForm() {
               setClubError(error);
               setIsClubLoading(false);
           });
-  }, [id]);
+  }, [clubid]);
      
     const handleChange = (event) => {
-          const { id, value } = event.target;
+          const { clubid, value } = event.target;
           setDetails((prevDetails) => ({
               ...prevDetails,
-              [id]: value,
+              [clubid]: value,
           }));
     };
 

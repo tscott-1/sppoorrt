@@ -10,7 +10,7 @@ function CreateprojectPage() {
     const navigate = useNavigate();
     const {auth, setAuth} = useAuth();
     // Here we use a hook that comes for free in react router called `useParams` to get the id from the URL so that we can pass it to our useClub hook.
-    const { id } = useParams();
+    const { clubid } = useParams();
  
     const user_id = auth.token ? window.localStorage.getItem("user_id") : null;
 
@@ -19,7 +19,7 @@ function CreateprojectPage() {
   
     // useClub returns three pieces of info, so we need to grab them all here
     
-    const { club, isLoading: isClubLoading, error: clubError } = useClub(id); 
+    const { club, isLoading: isClubLoading, error: clubError } = useClub(clubid); 
 
     
 
