@@ -17,13 +17,16 @@ import CreateclubPage from "./pages/CreateclubPage.jsx";
 import CreateprojectPage from "./pages/CreateprojectPage.jsx";
 import UpdateClubPage from "./pages/UpdateClubPage.jsx";
 import UpdateProjectPage from "./pages/UpdateProjectPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 import UserPage from "./pages/UserPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 
+
 // Here we import our components
 import NavBar from "./components/NavBar.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
+
 
 // Here we create our router and tell it whats pages to render at what path
 const router = createBrowserRouter([
@@ -48,6 +51,7 @@ const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage /> },
       { path: "/user", element: <UserPage /> },
       { path: "/admin", element: <AdminPage /> },
+      { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
