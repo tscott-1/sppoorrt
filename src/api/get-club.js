@@ -3,7 +3,7 @@ async function getClub(clubId) {
     const response = await fetch(url, { method: "GET" });
   
     if (!response.ok) {
-      const fallbackError = `Error fetching club with id ${clubIdId}`;
+      const fallbackError = `Error fetching club with id ${clubId}`;
   
       const data = await response.json().catch(() => {
         throw new Error(fallbackError);
