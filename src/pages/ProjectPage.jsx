@@ -7,6 +7,7 @@ import useClub from "../hooks/use-club";
 import useUser from "../hooks/use-user";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import deleteProject from "../api/delete-project.js";
 
 function ProjectPage() {
     const {auth, setAuth} = useAuth();
@@ -59,6 +60,24 @@ function ProjectPage() {
         navigate(`/clubs/${clubid}/projects/${projectid}/updateproject/`);
         };    
 
+    const handleDelete = (event) => {
+        event.preventDefault();
+        const confirmDelete = window.confirm("Are you sure you want to delete this project? This action cannot be undone.");
+    
+        if (confirmDelete) {
+        deleteProject(projectid)
+            .then((response) => {
+            console.log("Project deleted successfully", response);
+            navigate(`/clubs/${clubid}`);
+            })
+            .catch((error) => {
+            console.error("Delete failed:", error);
+            // Optional: Show error to user
+            alert(`Failed to delete project: ${error.message}`);
+            });
+        }
+        };    
+
     return (
       <>
       <div className="PageDisplay">
@@ -97,6 +116,11 @@ function ProjectPage() {
                       <button type="button" onClick={handleUpdate}>
                           Update Project
                       </button>
+                  </div>
+                  <div>
+                    <button type="button" onClick={handleDelete}>
+                        Delete Project
+                    </button>
                   </div>
                   </>
                 )}

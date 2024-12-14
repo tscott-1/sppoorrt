@@ -65,19 +65,19 @@ function ClubPage() {
       event.preventDefault();
       const confirmDelete = window.confirm("Are you sure you want to delete this club? This action cannot be undone.");
   
-  if (confirmDelete) {
-    deleteClub(clubid)
-      .then((response) => {
-        console.log("Club deleted successfully", response);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Delete failed:", error);
-        // Optional: Show error to user
-        alert(`Failed to delete club: ${error.message}`);
-      });
-    }
-  };
+    if (confirmDelete) {
+      deleteClub(clubid)
+        .then((response) => {
+          console.log("Club deleted successfully", response);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Delete failed:", error);
+          // Optional: Show error to user
+          alert(`Failed to delete club: ${error.message}`);
+        });
+      }
+    };
 
 
     return (
@@ -87,48 +87,51 @@ function ClubPage() {
           <img src={club.club_logo} />
         </div>
         <div className="hero3">
-          <div>
-            <h1>{club.club}</h1>
-            <h3>        
-                {club.description}
-            </h3>
-            <h3>{`Active Club: ${club.is_active}`}</h3>
-            <h3>{`Club Location: ${club.club_location}`}</h3>
-            {/* <h3>{club.club_size}</h3> */}
-            <h3>{club.sport_id.sport}</h3>
-            <h3>Contact: <span style={{color:'blue'}}> {club.club_owner.username}    </span>     email: <span style={{color:'blue'}}>{club.club_owner.email}</span></h3>
-          </div>
-              <div>
-                {isOwner && (
-                  <>
-                    <div>
-                        <button type="button" onClick={handleProject}>
-                            Create Project
-                        </button>
-                    </div>
-                    <div>
-                      <button type="button" onClick={handleUpdate}>
-                          Update Club Details
+            <div>
+              <h1>{club.club}</h1>
+              <h3>        
+                  {club.description}
+              </h3>
+              <h3>{`Active Club: ${club.is_active}`}</h3>
+              <h3>{`Club Location: ${club.club_location}`}</h3>
+              {/* <h3>{club.club_size}</h3> */}
+              <h3>{club.sport_id.sport}</h3>
+              <h3>Contact: <span style={{color:'blue'}}> {club.club_owner.username}    </span>     email: <span style={{color:'blue'}}>{club.club_owner.email}</span></h3>
+            </div>
+            <div>
+              {isOwner && (
+                <>
+                  <div>
+                      <button type="button" onClick={handleProject}>
+                          Create Project
                       </button>
-                    </div>
-                    <div>
-                      <button type="button" onClick={handleDelete}>
-                          Delete Club
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
+                  </div>
+                  <div>
+                    <button type="button" onClick={handleUpdate}>
+                        Update Club Details
+                    </button>
+                  </div>
+                  <div>
+                    <button type="button" onClick={handleDelete}>
+                        Delete Club
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
         </div>
       </div>
 
       <div>
         <h1>Projects</h1>
         <div id="project-list">
-            {filteredProjects.map((projectData) => {
-              return <ProjectCard key={projectData.projectid} projectData={projectData} />;
-            })}
-      </div>      
+            {filteredProjects.map((projectData) => (
+            <ProjectCard 
+            key={projectData.projectid} 
+            projectData={projectData} 
+          />
+        ))}
+        </div>      
       
       </div>
       </>
