@@ -53,7 +53,7 @@ function UpdateProjectPage() {
     {isOwner ? (
         <>
         <h1>{`Welcome ${user.username}`}</h1>
-            <h2>{`Update details for ${club.club} project ${project.project}`}</h2>
+            <h2>{`Update details for ${club.club} project ${project.title}`}</h2>
               <div id="updateProject">
               <UpdateprojectForm />;
           </div>  

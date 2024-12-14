@@ -51,20 +51,18 @@ function NavLinks(props) {
           <li onClick={() => isClicked && closeMenu()}>
           <Link to="/projects">Projects</Link>
           </li>
-          <li onClick={() => isClicked && closeMenu()}>
           {auth.token && (
-            <Link to="/user">
-              Profile
-            </Link>
+            <li onClick={() => isClicked && closeMenu()}>
+              <Link to="/user">
+                Profile
+              </Link>
+             </li> 
           )} 
-          </li>
-          <li onClick={() => isClicked && closeMenu()}>
           {user?.is_superuser && (
-            <Link to="/admin">
-              Admin
-            </Link>
-          )} 
-          </li>
+            <li onClick={() => isClicked && closeMenu()}>
+              <Link to="/admin">Admin</Link>
+            </li>
+          )}
           <li onClick={() => isClicked && closeMenu()}>
           <Link to="/contact">Contact</Link>
           </li>
