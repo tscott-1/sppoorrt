@@ -1,10 +1,13 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import { useNavigate } from "react-router-dom";
 
 function ContactForm() {
+  const navigate = useNavigate();
   const [state, handleSubmit] = useForm("xpwadobo");
   if (state.succeeded) {
-      return <p>Thanks for joining!</p>;
+      navigate("/");
+      return <p>Thanks for your message!</p>;
   }
   return (
     <form onSubmit={handleSubmit}>

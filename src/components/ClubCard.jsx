@@ -3,7 +3,7 @@ import "./Cards.css";
 
 function ClubCard(props) {
   const { clubData } = props;
-  const clubLink = `clubs/${clubData.id}`;
+  const clubLink = `/clubs/${clubData.id}`;
 
   return (
     <div className="card">

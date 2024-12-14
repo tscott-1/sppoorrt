@@ -1,5 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/use-auth.js";
+import useUser from "../hooks/use-user";
+
 
 function NavLinks(props) {
   const {isClicked, closeMenu} = props
@@ -7,6 +9,19 @@ function NavLinks(props) {
 
 
   const {auth, setAuth} = useAuth();
+
+  const user_id = auth.token ? window.localStorage.getItem("user_id") : null;
+
+  const {user, isLoading, error } = useUser(user_id) ;
+  // console.log({user.is_superuser});
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+   if (error) {
+    return <p>User Error: {error.message}</p>;
+  }
 
   const handleLogout = () => {
       window.localStorage.removeItem("token");
@@ -31,7 +46,24 @@ function NavLinks(props) {
           )} 
           </li>
           <li onClick={() => isClicked && closeMenu()}>
-          <Link to="/about">About</Link>
+          <Link to="/clubs">Clubs</Link>
+          </li>
+          <li onClick={() => isClicked && closeMenu()}>
+          <Link to="/projects">Projects</Link>
+          </li>
+          <li onClick={() => isClicked && closeMenu()}>
+          {auth.token && (
+            <Link to="/user">
+              Profile
+            </Link>
+          )} 
+          </li>
+          <li onClick={() => isClicked && closeMenu()}>
+          {user?.is_superuser && (
+            <Link to="/admin">
+              Admin
+            </Link>
+          )} 
           </li>
           <li onClick={() => isClicked && closeMenu()}>
           <Link to="/contact">Contact</Link>

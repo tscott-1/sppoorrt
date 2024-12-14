@@ -21,10 +21,18 @@ function UserGreeting() {
   }
 
   return (
+    <>
     <div>
-      <h1>Welcome back, {user.first_name}!</h1>
+      <h1>Welcome back, {user.username}!</h1>
+      <p>First Name:  {user.first_name}!</p>
+      <p>Last Name:  {user.last_name}!</p>
       <p>Your User ID: {user.id}</p>
+      
     </div>
+    <div>
+      <h3>Someone should really give you an option to edit this!</h3>
+    </div>
+    </>
   );
 }
 
