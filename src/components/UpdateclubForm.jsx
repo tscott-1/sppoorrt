@@ -47,17 +47,18 @@ function UpdateClubForm() {
   }, [clubid]);
      
     const handleChange = (event) => {
-          const { clubid, value } = event.target;
-          setDetails((prevDetails) => ({
-              ...prevDetails,
-              [clubid]: value,
-          }));
+        const { id, value, type, checked } = event.target;
+        setDetails((prevDetails) => ({
+        ...prevDetails,
+        [id]: type === "checkbox" ? checked : value, // Update checkbox state correctly
+        }));
     };
 
     const handleSubmit = (event) => {
             event.preventDefault();
             if (details.club) {
                 putUpdateclub(
+                    clubid,
                     details.club,
                     details.description,
                     details.club_size,
@@ -150,6 +151,15 @@ function UpdateClubForm() {
                 ))}
             </select>
         </div>
+        <div>
+        <input
+          type="checkbox"
+          id="is_active"
+          checked={details.is_active}
+          onChange={handleChange}
+        />
+        <label for="anonymous" id="checkboxlabel"> Club is active</label>
+      </div>
         <button type="submit" onClick={handleSubmit}>Update Club Details</button>
       </form>
     );

@@ -3,7 +3,7 @@ async function getClubs() {
   const response = await fetch(url, { method: "GET" });
 
   if (!response.ok) {
-      const fallbackError = "Error fetching projects";
+      const fallbackError = "Error fetching clubs";
 
       const data = await response.json().catch(() => {
         throw new Error(fallbackError);

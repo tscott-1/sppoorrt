@@ -1,8 +1,8 @@
-async function postUpdateproject(title, description, goal, image, fund_type, is_open, end_date, member_only, owner_club ) {
-  const url = `${import.meta.env.VITE_API_URL}/projects/`;
+async function putUpdateproject(projectid, title, description, goal, image, fund_type, is_open, end_date, member_only, owner_club ) {
+  const url = `${import.meta.env.VITE_API_URL}/projects/${projectid}`;
   const token = window.localStorage.getItem("token")
   const response = await fetch(url, {
-    method: "POST", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
+    method: "PUT", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
     headers: {
       "Authorization": `Token ${token}`,
       "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import postCreateclub from "../api/post-createclub.js";
-import useSports from "../hooks/use-sports"; // Adjust the import path as needed
+import useSports from "../hooks/use-sports"; 
 
 function CreateclubForm() {
     const navigate = useNavigate(); 

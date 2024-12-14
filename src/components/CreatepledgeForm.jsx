@@ -5,13 +5,13 @@ import postCreatepledge from "../api/post-createpledge.js";
 
 function CreatepledgeForm() {
   const navigate = useNavigate();
-  const { id } = useParams(); // Extract the id from the URL
+  const { clubid, projectid } = useParams(); // Extract the id from the URL
 
   const [details, setDetails] = useState({
     amount: "",
     comment: "",
     anonymous: false, // Default to false
-    project: id,
+    project: projectid,
   });
 
   const handleChange = (event) => {

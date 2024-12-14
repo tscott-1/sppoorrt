@@ -8,14 +8,15 @@ import postCreateproject from "../api/post-createproject.js";
 function CreateprojectForm() {
       const navigate = useNavigate(); 
       const { clubid } = useParams(); // Extract the id from the URL
+   
 
       // Function to calculate today's date + 30 days in YYYY-MM-DD format
       const getDefaultEndDate = () => {
-      const today = new Date();
-      const endDate = new Date(today);
-      endDate.setDate(today.getDate() + 30); // Add 30 days
-      return endDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
-    };
+            const today = new Date();
+            const endDate = new Date(today);
+            endDate.setDate(today.getDate() + 30); // Add 30 days
+            return endDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+      };
 
    
       const [details, setDetails] = useState({
@@ -32,16 +33,16 @@ function CreateprojectForm() {
 
       
       const handleChange = (event) => {
-            const { clubid, value } = event.target;
+            const { id, value } = event.target;
             setDetails((prevDetails) => ({
                   ...prevDetails,
-                  [clubid]: value,
+                  [id]: value,
             }));
       };
 
       const handleSubmit = (event) => {
                   event.preventDefault();
-                  if (details.title && details.owner_club) {
+                  if (details.title) {
                   postCreateproject(
                         details.title,
                         details.description,
@@ -54,6 +55,7 @@ function CreateprojectForm() {
                         details.owner_club
                   ).then((response) => {
                         console.log(response);
+                        console.log(details);
                         navigate(`/clubs/${clubid}`);
                   });
                   }

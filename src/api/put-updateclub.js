@@ -1,8 +1,8 @@
-async function putUpdateclub(club, description, club_size, club_location, club_logo, sport, is_active ) {
+async function putUpdateclub(clubid, club, description, club_size, club_location, club_logo, sport, is_active ) {
   const token = window.localStorage.getItem("token")  
-  const url = `${import.meta.env.VITE_API_URL}/clubs/`;
+  const url = `${import.meta.env.VITE_API_URL}/clubs/${clubid}`;
     const response = await fetch(url, {
-      method: "POST", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
+      method: "PUT", // We need to tell the server that we are sending JSON data so we set the Content-Type header to application/json
       headers: {
         "Authorization": `Token ${token}`,
         "Content-Type": "application/json",

@@ -14,6 +14,7 @@ import SignupPage from "./pages/SignupPage.jsx";
 import CreateclubPage from "./pages/CreateclubPage.jsx";
 import CreateprojectPage from "./pages/CreateprojectPage.jsx";
 import UpdateClubPage from "./pages/UpdateClubPage.jsx";
+import UpdateProjectPage from "./pages/UpdateProjectPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
       { path: "/clubs/:clubid", element: <ClubPage /> },
       { path: "/clubs/:clubid/createproject", element: <CreateprojectPage/> },
       { path: "/clubs/:clubid/updateclub", element: <UpdateClubPage/>},
-      { path: "/clubs/:clubid/projects/:projectid", element: <ProjectPage /> }, 
+      { path: "/clubs/:clubid/projects/:projectid", element: <ProjectPage /> },
+      { path: "/clubs/:clubid/projects/:projectid/updateproject", element: <UpdateProjectPage /> }, 
       { path: "/createclub", element: <CreateclubPage/> },
       { path: "/contact", element: <ContactPage /> },
       { path: "/user", element: <UserPage /> },
