@@ -43,9 +43,12 @@ function SignupForm() {
                           details.password
                       ).then((loginresponse) => {
                           window.localStorage.setItem("token", loginresponse.token);
+                          window.localStorage.setItem("user_email", loginresponse.email);
+                          window.localStorage.setItem("user_id", loginresponse.user_id);
                         setAuth({
                             token: loginresponse.token,
                         });
+
                           navigate("/");
                       });
                   }
