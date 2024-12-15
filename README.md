@@ -44,10 +44,16 @@ Similar behaviour is set up if you are not a club owner and try to edit a clubs 
 ## Contact page
 A contact page is available, this contains a form that will send an email to myself - this is setup using a formsfree account.
 ![Contact Page](./public/images/ContactPage.png)
+
 ## Club Page and Project Page - Search
 Both the club page and project page have an option to search at the top.  Typing in the search box will filter 
 to projects or clubs with the name or title you are searching.
 ![Search Bar](./public/images/ProjectSearch.png)
+
+## User Page
+The user page displays information about the logged in user, and gives a filtered display of clubs and projects belonging to the user.
+![User Page](./public/images/UserPage.png)
+
 ## Admin Page
 Admin page allows superusers to add different sports to the sports list. This page displays a table of the 
 sports listed alphabetically.
