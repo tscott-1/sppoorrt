@@ -21,7 +21,7 @@ When logged in, you will see the option to log out, and a profile link
 when logged in as admin, you will see an admin link.
 
 ![Homepage Image](./public/images/HomePage.png)
-![Reactive Homepage](./public/images/HomePagereactive.png)
+![Reactive Homepage](./public/images/HomePageReactive.png)
 ## Project creation page
 ### This App requires projects to be made by the club owner.
 A club must be created in order to create a project - once logged in, an option to create your own club is available from both the home page and the 'clubs' page.
